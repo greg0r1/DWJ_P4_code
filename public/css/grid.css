@@ -1,0 +1,19 @@
+.themed-grid-col {
+  padding: 30px;
+  background-color: rgba(61, 89, 124, 0.15);
+  border: 1px solid rgba(61, 89, 124, 0.2);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.themed-grid-col>p {
+  margin: unset;
+}
+
+.themed-container {
+  padding: 15px;
+  margin-bottom: 30px;
+  background-color: rgba(0, 123, 255, .15);
+  border: 1px solid rgba(0, 123, 255, .2);
+}
