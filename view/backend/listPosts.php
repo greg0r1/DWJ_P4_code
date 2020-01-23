@@ -13,22 +13,14 @@
                 <div class="col-sm-6">
                     <a href="index.php?action=createPost" class="btn btn-success">
                         <i class="material-icons"></i>
-                        <span>Ajouter un billet</span></a>
-                    <a href="#deleteEmployeeModal" class="btn btn-danger">
-                        <i class="material-icons"></i>
-                        <span>Supprimer</span></a>
+                        <span>Ajouter un billet</span>
+                    </a>
                 </div>
             </div>
         </div>
         <table id="listPostsCRUD" class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="selectAll">
-                            <label for="selectAll"></label>
-                        </span>
-                    </th>
                     <th>#</th>
                     <th>Titre</th>
                     <th>Contenu du billet</th>
@@ -40,18 +32,15 @@
             </thead>
             <tbody>
                 <?php
+                $number0fElements = 0;
+
                 while ($data = $posts->fetch()) {
                     if (empty($data)) {
                         echo 'Il n\'y a pas de billet à afficher!';
                     } else {
+                        $number0fElements++;
                 ?>
                         <tr>
-                            <td>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox<?= $data['id'] ?>" name="idPost-<?= $data['id'] ?>" value="1">
-                                    <label for="checkbox<?= $data['id'] ?>"></label>
-                                </span>
-                            </td>
                             <td><?= $data['id'] ?></td>
                             <td><?= $data['title'] ?></td>
                             <td><?= $data['content']; ?></td>
@@ -77,44 +66,33 @@
         </table>
         <div class="clearfix">
             <div class="hint-text">Affichage de
-                <b><?= $limit; ?></b>
+                <b><?= $number0fElements ?></b>
                 entrées sur
                 <b><?= $number_total_posts; ?></b>
             </div>
+            <ul class="pagination">
+                <li class="page-item disabled">
+                    <a href="href=index.php?action=adminListPosts&amp;page=<?= $i--; ?>">Previous</a>
+                </li>
 
-            <?php
-            if ($page > $number_of_pages) {
-            ?><div>
-                    <p style="font-size:2rem;margin:50px auto 5px">La page n'existe pas!</p>
-                    <p><a href="index.php">Retour</a></p>
-                </div>
-            <?php
-            } else {
-            ?>
-
-                <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a href="#">Previous</a>
-                    </li>
-
-                    <?php
-                    for ($i = 1; $i <= $number_of_pages; $i++) {
-                    ?>
-                        <li class="page-item">
-                            <a href="index.php?action=adminListPosts&amp;page=<?= $i; ?>" class="page-link"><?= $i; ?></a>
-                        </li>
-                    <?php
-                    };
-                    ?>
+                <?php
+                for ($i = 1; $i <= $number_of_pages; $i++) {
+                ?>
                     <li class="page-item">
-                        <a href="#" class="page-link">Next</a>
+                        <a href="index.php?action=adminListPosts&amp;page=<?= $i; ?>" class="page-link"><?= $i; ?></a>
                     </li>
-                </ul>
-            <?php
-            }
-            ?>
+                <?php
+                };
+                ?>
+                <li class="page-item">
+                    <a href="href=index.php?action=adminListPosts&amp;page=<?= $i++; ?>" class="page-link">Next</a>
+                </li>
+            </ul>
         </div>
     </div>
+    <a class="nav-link" href="<?= $_SERVER['HTTP_REFERER']; ?>">
+        Retour
+    </a>
 </div>
 
 <?php $content = ob_get_clean(); ?>

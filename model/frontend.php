@@ -3,7 +3,7 @@ function getPosts($limit, $start)
 {
     $db = dbConnect();
 
-    $sql_posts = ("SELECT *, DATE_FORMAT(creation_date, 'Message du : %d/%m/%Y à %hh%m') AS formatted_date FROM posts  ORDER BY creation_date DESC LIMIT :limit OFFSET :start");
+    $sql_posts = ("SELECT *, DATE_FORMAT(creation_date, 'Message du : %d/%m/%Y à %Hh%i') AS formatted_date FROM posts  ORDER BY creation_date DESC LIMIT :limit OFFSET :start");
     $request_posts = $db->prepare($sql_posts) or die(print_r($db->errorInfo()));
 
     $request_posts->bindValue('limit', $limit, PDO::PARAM_INT);
@@ -18,7 +18,7 @@ function getPosts($limit, $start)
 function getPost($postId)
 {
     $db = dbConnect();
-    $req = $db->prepare("SELECT *, DATE_FORMAT(creation_date, 'Message du : %d/%m/%Y à %hh%m') AS formatted_date FROM posts WHERE id = ?") or die(print_r($db->errorInfo()));;
+    $req = $db->prepare("SELECT *, DATE_FORMAT(creation_date, 'Message du : %d/%m/%Y à %Hh%i') AS formatted_date FROM posts WHERE id = ?") or die(print_r($db->errorInfo()));;
 
     $req->execute(array($postId));
     $post = $req->fetch();

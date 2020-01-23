@@ -40,7 +40,7 @@ function listPostsCRUD()
     $page = (!empty(strip_tags($_GET['page']))) ? $_GET['page'] : 1;
     $limit = 10;
     $start = ($page - 1) * $limit;
-    $number_total_posts = pagingCommentsList();
+    $number_total_posts = pagingAdmin();
     $number_of_pages = ceil($number_total_posts / $limit);
 
 

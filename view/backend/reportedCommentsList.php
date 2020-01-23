@@ -10,25 +10,11 @@
                     <h2>Reported Comments Manager
                     </h2>
                 </div>
-                <div class="col-sm-6">
-                    <a href="index.php?action=createPost" class="btn btn-success">
-                        <i class="material-icons"></i>
-                        <span>Ajouter un commentaire</span></a>
-                    <a href="#deleteEmployeeModal" class="btn btn-danger">
-                        <i class="material-icons"></i>
-                        <span>Supprimer</span></a>
-                </div>
             </div>
         </div>
         <table id="listPostsCRUD" class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="selectAll">
-                            <label for="selectAll"></label>
-                        </span>
-                    </th>
                     <th>#</th>
                     <th>Identifiant du billet</th>
                     <th>Auteur</th>
@@ -45,12 +31,6 @@
                     } else {
                 ?>
                         <tr>
-                            <td>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkboxId" name="idPost-<?= $data_comments['id'] ?>" value="1">
-                                    <label for="checkboxId"></label>
-                                </span>
-                            </td>
                             <td><?= $data_comments['id'] ?></td>
                             <td><a href="index.php?action=editPost&amp;id=<?= $data_comments['id']; ?>"><?= $data_comments['post_id'] ?></a></td>
                             <td><?= $data_comments['author'] ?></td>
@@ -79,40 +59,29 @@
                 entrées sur
                 <b><?= $number_total_posts; ?></b>
             </div>
+            <ul class="pagination">
+                <li class="page-item disabled">
+                    <a href="index.php?action=reportedCommentsList&amp;page=<?= $i; ?>">Previous</a>
+                </li>
 
-            <?php
-            if ($page > $number_of_pages) {
-            ?><div>
-                    <p style="font-size:2rem;margin:50px auto 5px">La page n'existe pas!</p>
-                    <p><a href="index.php">Retour</a></p>
-                </div>
-            <?php
-            } else {
-            ?>
-
-                <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a href="#">Previous</a>
-                    </li>
-
-                    <?php
-                    for ($i = 1; $i <= $number_of_pages; $i++) {
-                    ?>
-                        <li class="page-item">
-                            <a href="index.php?action=adminListPosts&amp;page=<?= $i; ?>" class="page-link"><?= $i; ?></a>
-                        </li>
-                    <?php
-                    };
-                    ?>
+                <?php
+                for ($i = 1; $i <= $number_of_pages; $i++) {
+                ?>
                     <li class="page-item">
-                        <a href="#" class="page-link">Next</a>
+                        <a href="index.php?action=reportedCommentsList&amp;page=<?= $i; ?>" class="page-link"><?= $i; ?></a>
                     </li>
-                </ul>
-            <?php
-            }
-            ?>
+                <?php
+                };
+                ?>
+                <li class="page-item">
+                    <a href="index.php?action=reportedCommentsList&amp;page=<?= $i++; ?>" class="page-link">Next</a>
+                </li>
+            </ul>
         </div>
     </div>
+    <a class="nav-link" href="<?= $_SERVER['HTTP_REFERER']; ?>">
+        Retour
+    </a>
 </div>
 
 <?php $content = ob_get_clean(); ?>

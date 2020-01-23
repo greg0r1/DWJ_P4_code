@@ -15,8 +15,8 @@ function authAdmin()
                 setcookie('nameAdminConnected', $name, time() + 365 * 24 * 3600, null, null, false, true);
                 header('location:index.php?action=adminCnx&name=' . $name);
             } else {
-                echo 'Le mot de passe est invalide.';
-                echo $passwd_result['password'];
+                echo '<script>alert("Le mot de passe est invalide")</script>';
+                echo '<script>document.location.href="index.php?action=loginForm"</script>';
             }
         } else {
             echo 'Login invalide.';
@@ -122,11 +122,11 @@ function pagingCommentsList()
     $db = dbConnect();
 
     $sql_paging = "SELECT COUNT(*) AS number_total_comments FROM `comments`";
-    $total_posts = $db->query($sql_paging);
-    $req_total_posts = $total_posts->fetch();
-    $number_total_posts = $req_total_posts['number_total_comments'];
+    $total_comments = $db->query($sql_paging);
+    $req_total_comments = $total_comments->fetch();
+    $number_total_comments = $req_total_comments['number_total_comments'];
 
-    return $number_total_posts;
+    return $number_total_comments;
 }
 
 function getReportedCommentsCRUD($limit, $start)

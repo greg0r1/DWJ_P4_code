@@ -31,19 +31,19 @@ $titleCurrentPage = 'Accueil - Tableau de bord';
         <h3>CRUD Commentaires</h3>
         <div class="row ">
             <div class="col-4 themed-grid-col">
-                <a href="index.php?action=">
+                <a href="index.php?action=reportedCommentsList">
                     <i class="material-icons">note_add</i>
                     <p>Les commentaires signalés</p>
                 </a>
             </div>
             <div class="col-4 themed-grid-col">
-                <a href="index.php?action=">
+                <a href="index.php?action=commentsList">
                     <i class="material-icons">create</i>
                     <p>Modifier un commentaire</p>
                 </a>
             </div>
             <div class="col-4 themed-grid-col">
-                <a href="index.php?action=">
+                <a href="index.php?action=commentsList">
                     <i class="material-icons">delete_sweep</i>
                     <p>Supprimer un commentaire</p>
                 </a>

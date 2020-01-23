@@ -7,7 +7,7 @@
     <div class="news">
         <h3><?= htmlspecialchars($post['title']) ?></h3>
         <em><?= $post['formatted_date'] . " de " . $post['author']; ?></em>
-        <p><?= htmlspecialchars($post['content']); ?></p>
+        <p><?= strip_tags($post['content']); ?></p>
     </div>
 
     <div id="commentaires">
