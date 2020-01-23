@@ -33,3 +33,72 @@ function addPost()
         echo '<script>alert(\'Votre billet à bien été ajouté ' . $_COOKIE['nameAdminConnected'] . '\')</script>';
     }
 }
+
+function listPostsCRUD()
+{
+    // Pagination
+    $page = (!empty(strip_tags($_GET['page']))) ? $_GET['page'] : 1;
+    $limit = 10;
+    $start = ($page - 1) * $limit;
+    $number_total_posts = pagingCommentsList();
+    $number_of_pages = ceil($number_total_posts / $limit);
+
+
+    $posts = getPostsCRUD($limit, $start);
+
+    require('./view/backend/listPosts.php');
+}
+
+function editPost($postId)
+{
+    $post = modifyPostCRUD($postId);
+    require('./view/backend/editPost.php');
+}
+
+function updatePost($idPost, $title, $content)
+{
+    updatingPost($idPost, $title, $content);
+    require('./view/backend/updatedPost.php');
+}
+
+function deletingPost($idPost)
+{
+    deletePost($idPost);
+    require('./view/backend/deletedPost.php');
+}
+
+function listCommentsCRUD()
+{
+    // Pagination
+    $page = (!empty(strip_tags($_GET['page']))) ? $_GET['page'] : 1;
+    $limit = 10;
+    $start = ($page - 1) * $limit;
+    $number_total_comments = pagingCommentsList();
+    $number_of_pages = ceil($number_total_comments / $limit);
+
+
+    $comments = getCommentsCRUD($limit, $start);
+
+    require('./view/backend/listComments.php');
+}
+
+function reportedCommentsListCRUD()
+{
+    // Pagination
+    $page = (!empty(strip_tags($_GET['page']))) ? $_GET['page'] : 1;
+    $limit = 10;
+    $start = ($page - 1) * $limit;
+    $number_total_comments = pagingReportedCommentsList();
+    $number_of_pages = ceil($number_total_comments / $limit);
+
+
+    $comments = getReportedCommentsCRUD($limit, $start);
+
+    require('./view/backend/reportedCommentsList.php');
+}
+
+function deletingComment($idComment)
+{
+    deleteComment($idComment);
+    require('./view/backend/deletedComment.php');
+}

@@ -3,6 +3,8 @@
     <link rel="stylesheet" href="../public/css/dashboard.css">
     <link rel="stylesheet" href="../public/css/grid.css">
     <link rel="stylesheet" href="../public/css/form-validation.css">
+    <link rel="stylesheet" href="../public/css/listCRUD.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Favicons -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Roboto+Mono:400,500|Material+Icons" rel="stylesheet">

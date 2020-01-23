@@ -38,3 +38,131 @@ function addNewPost()
     ));
     $newPost->closeCursor();
 }
+
+function getPostsCRUD($limit, $start)
+{
+    $db = dbConnect();
+
+    $sql_posts = ("SELECT *, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%i') AS formatted_date, DATE_FORMAT(last_modification, '%d/%m/%Y à %Hh%i') AS last_modification_format FROM posts  ORDER BY creation_date DESC LIMIT :limit OFFSET :start");
+    $request_posts = $db->prepare($sql_posts) or die(print_r($db->errorInfo()));
+
+    $request_posts->bindValue('limit', $limit, PDO::PARAM_INT);
+    $request_posts->bindValue('start', $start, PDO::PARAM_INT);
+
+    $request_posts->execute();
+
+
+    return $request_posts;
+}
+
+function modifyPostCRUD($postId)
+{
+    $db = dbConnect();
+
+    $request_post = $db->prepare("SELECT * FROM `posts` WHERE id = ?") or die(print_r($db->errorInfo()));
+
+    $request_post->execute(array($postId));
+    $post = $request_post->fetch();
+    return $post;
+    $request_post->closeCursor();
+}
+
+function updatingPost($idPost, $title, $content)
+{
+    $db = dbConnect();
+    $request_post = $db->prepare("UPDATE `posts` SET `title`= :title,`content`= :content, `last_modification`= NOW() WHERE id = :idPost");
+    $request_post->execute(array(
+        'title' => $title,
+        'content' => $content,
+        'idPost' => $idPost
+    ));
+    $request_post->closeCursor();
+}
+
+function pagingAdmin()
+{
+    $db = dbConnect();
+
+    $sql_paging = "SELECT COUNT(*) AS number_total_posts FROM `posts`";
+    $total_posts = $db->query($sql_paging);
+    $req_total_posts = $total_posts->fetch();
+    $number_total_posts = $req_total_posts['number_total_posts'];
+
+    return $number_total_posts;
+}
+
+function deletePost($idPost)
+{
+    $db = dbConnect();
+    $request_post = $db->prepare("DELETE FROM `posts` WHERE id = :idPost");
+    $request_post->execute(array(
+        'idPost' => $idPost
+    ));
+    $request_post->closeCursor();
+}
+
+function getCommentsCRUD($limit, $start)
+{
+    $db = dbConnect();
+
+    $sql_comments = ("SELECT *, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%i') AS comment_date_format FROM comments ORDER BY comment_date DESC LIMIT :limit OFFSET :start");
+    $request_comments = $db->prepare($sql_comments) or die(print_r($db->errorInfo()));
+
+    $request_comments->bindValue('limit', $limit, PDO::PARAM_INT);
+    $request_comments->bindValue('start', $start, PDO::PARAM_INT);
+
+    $request_comments->execute();
+
+
+    return $request_comments;
+}
+
+function pagingCommentsList()
+{
+    $db = dbConnect();
+
+    $sql_paging = "SELECT COUNT(*) AS number_total_comments FROM `comments`";
+    $total_posts = $db->query($sql_paging);
+    $req_total_posts = $total_posts->fetch();
+    $number_total_posts = $req_total_posts['number_total_comments'];
+
+    return $number_total_posts;
+}
+
+function getReportedCommentsCRUD($limit, $start)
+{
+    $db = dbConnect();
+
+    $sql_comments = ("SELECT *, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%i') AS comment_date_format FROM `comments` WHERE `reported` = 1 ORDER BY `comments`.`comment_date` DESC LIMIT :limit OFFSET :start");
+    $request_comments = $db->prepare($sql_comments) or die(print_r($db->errorInfo()));
+
+    $request_comments->bindValue('limit', $limit, PDO::PARAM_INT);
+    $request_comments->bindValue('start', $start, PDO::PARAM_INT);
+
+    $request_comments->execute();
+
+
+    return $request_comments;
+}
+
+function pagingReportedCommentsList()
+{
+    $db = dbConnect();
+
+    $sql_paging = "SELECT COUNT(*) AS number_total_comments FROM `comments` WHERE `reported` = 1";
+    $total_comments_reported = $db->query($sql_paging);
+    $req_total_comments_reported = $total_comments_reported->fetch();
+    $number_total_comments_reported = $req_total_comments_reported['number_total_comments'];
+
+    return $number_total_comments_reported;
+}
+
+function deleteComment($idComment)
+{
+    $db = dbConnect();
+    $request_delete_comment = $db->prepare("DELETE FROM `comments` WHERE id = :idComment");
+    $request_delete_comment->execute(array(
+        'idComment' => $idComment
+    ));
+    $request_delete_comment->closeCursor();
+}

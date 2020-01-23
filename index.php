@@ -42,9 +42,45 @@ if (isset($_GET['action'])) {
         createPost();
     } elseif ($_GET['action'] == 'addPost') {
         addPost();
+    } elseif ($_GET['action'] == 'adminListPosts') {
+        listPostsCRUD();
+    } elseif ($_GET['action'] == 'editPost') {
+        if (isset($_GET['id'])) {
+            $postId = $_GET['id'];
+            editPost($postId);
+        } else {
+            listPostsCRUD();
+        }
+    } elseif ($_GET['action'] == 'updatePost') {
+        if (!empty($_POST['tinymceTitle']) || !empty($_POST['tinymceContent'])) {
+            $idPost = $_GET['idPost'];
+            $title = $_POST['tinymceTitle'];
+            $content = $_POST['tinymceContent'];
+            updatePost($idPost, $title, $content);
+        } else {
+            echo '<h2>Erreur de contenu. Les données du formulaire sont vides.</h2>';
+        }
+    } elseif ($_GET['action'] == 'deletePost') {
+        if (isset($_GET['id']) && !empty($_GET['id'])) {
+            $idPost = $_GET['id'];
+            deletingPost($idPost);
+        } else {
+            echo 'Erreur d\'identification du post';
+        }
+    } elseif ($_GET['action'] == 'commentsList') {
+        listCommentsCRUD();
+    } elseif ($_GET['action'] == 'reportedCommentsList') {
+        reportedCommentsListCRUD();
+    } elseif ($_GET['action'] == 'deleteComment') {
+        if (isset($_GET['idComment']) && !empty($_GET['idComment'])) {
+            $idComment = $_GET['idComment'];
+            deletingComment($idComment);
+        } else {
+            echo 'Erreur d\'identification du commentaire';
+        }
     } else {
         listPosts();
     }
 } else {
-    listPosts();
+    header('location:index.php?action=listPosts&page=1');
 }

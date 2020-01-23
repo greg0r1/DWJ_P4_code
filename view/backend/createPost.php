@@ -1,6 +1,7 @@
 <?php ob_start(); ?>
 
-<h4 class="mb-3">Rédaction d'un billet</h4>
+<?php $titleCurrentPage = 'Rédaction d\'un billet'; ?>
+
 <form id="tinymceForm" action="index.php?action=addPost" method="post">
   <div class="col-md-12 mb-3">
     <label for="tinymceTitle">Titre du billet</label>
@@ -15,6 +16,9 @@
         <button type="submit" class="btn btn-primary mb-2">Envoyer</button>
         <button type="reset" class="btn btn-primary mb-2">Effacer</button>
       </div>
+      <a class="nav-link" href="<?= $_SERVER['HTTP_REFERER']; ?>">
+        Retour
+      </a>
     </div>
 </form>
 </div>

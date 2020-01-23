@@ -39,6 +39,11 @@ header>nav {
     background-color: #254c73 !important;
 }
 
+#homeAdmin {
+    margin: 0;
+    max-width: 800px;
+}
+
 /* Pagination */
 #pagination {
     margin: auto;
@@ -114,6 +119,10 @@ header>nav {
     margin-bottom: 20px;
 }
 
+#tinymceForm {
+    max-width: 800px;
+}
+
 
 .btn-primary {
     color: #fff;
@@ -125,8 +134,17 @@ header>nav {
     margin: 20px auto;
 }
 
-#CRUD-billets {
-    margin: 30px auto;
+/* Pagination */
+#paging {
+    margin: auto;
+    padding: 10px;
+    display: flex !important;
+    justify-content: center;
+}
+
+#paging>a {
+    margin: 0;
+    padding: 10px;
 }
 
 @media (min-width: 768px) {
