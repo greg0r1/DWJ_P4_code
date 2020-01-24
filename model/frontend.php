@@ -62,11 +62,17 @@ function reportComment($idComment)
     $addReportComment = $db->prepare("UPDATE `comments` SET `reported` = '1' WHERE `comments`.`id` = ?");
     $addReportComment->execute(array($idComment));
 
-    $alertMessReq = $db->prepare("SELECT `author` FROM `comments` WHERE `id` = ?");
-    $alertMessReq->execute(array($idComment));
-    $alertMess = $alertMessReq->fetch();
+    if ($addReportComment == false) {
+        throw new Exception("Error: Le commentaire n'a pas pu être signalé", 1);
+    } else {
+        $alertMessReq = $db->prepare("SELECT `author` FROM `comments` WHERE `id` = ?");
+        $alertMessReq->execute(array($idComment));
 
-    echo '<script>alert("Le commentaire de ' . $alertMess['author'] . ' a bien été signalé")</script>';
+        $alertMess = $alertMessReq->fetch();
+
+        echo '<script>alert("Le commentaire de ' . $alertMess['author'] . ' a bien été signalé")</script>';
+    }
+
     $alertMessReq->closeCursor();
     $addReportComment->closeCursor();
 }

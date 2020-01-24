@@ -19,8 +19,13 @@ function post($postId)
 {
     $comments = getComments($postId);
     $post = getPost($postId);
-
-    require('./view/frontend/postView.php');
+    if ($comments == false) {
+        throw new Exception("Error de récupération des commentaires.", 1);
+    } elseif ($post == false) {
+        throw new Exception("Error de récupération du post.", 1);
+    } else {
+        require('./view/frontend/postView.php');
+    }
 }
 
 function addComment($postId, $author, $comment)
@@ -28,7 +33,7 @@ function addComment($postId, $author, $comment)
     $insertline = postComment($postId, $author, $comment);
 
     if ($insertline == false) {
-        die('Impossible d\'ajouter le commentaire !');
+        throw new Exception("Impossible d\'ajouter le commentaire !", 1);
     } else {
         header('location:index.php?action=post&id=' . $postId);
     }

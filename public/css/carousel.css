@@ -54,6 +54,10 @@ body {
   background-size: cover;
 }
 
+.carousel h1 {
+  text-align: left;
+}
+
 /* MARKETING CONTENT
 -------------------------------------------------- */
 

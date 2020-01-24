@@ -78,8 +78,11 @@ function listCommentsCRUD()
 
 
     $comments = getCommentsCRUD($limit, $start);
-
-    require('./view/backend/listComments.php');
+    if ($comments == false) {
+        throw new Exception("Erreur: Les commentaires n'ont pas été récupérés.", 1);
+    } else {
+        require('./view/backend/listComments.php');
+    }
 }
 
 function reportedCommentsListCRUD()
@@ -93,12 +96,20 @@ function reportedCommentsListCRUD()
 
 
     $comments = getReportedCommentsCRUD($limit, $start);
-
-    require('./view/backend/reportedCommentsList.php');
+    if ($comments == false) {
+        throw new Exception("Erreur: Les commentaires signalés n'ont pas été récupérés.", 1);
+    } else {
+        require('./view/backend/reportedCommentsList.php');
+    }
 }
 
 function deletingComment($idComment)
 {
-    deleteComment($idComment);
-    require('./view/backend/deletedComment.php');
+    $deleteComment = deleteComment($idComment);
+    if ($deleteComment == false) {
+        throw new Exception("Erreur: le commentaire n'a pas été supprimé.", 1);
+    } else {
+        require('./view/backend/deletedComment.php');
+        $deleteComment->closeCursor();
+    }
 }

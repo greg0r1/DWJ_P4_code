@@ -76,6 +76,9 @@ function updatingPost($idPost, $title, $content)
         'content' => $content,
         'idPost' => $idPost
     ));
+    if ($request_post == false) {
+        throw new Exception("Erreur: Le billet n'a pas été modifié.", 1);
+    }
     $request_post->closeCursor();
 }
 
@@ -98,6 +101,9 @@ function deletePost($idPost)
     $request_post->execute(array(
         'idPost' => $idPost
     ));
+    if ($request_post == false) {
+        throw new Exception("Erreur: Le billet n'a pas été supprimé.", 1);
+    }
     $request_post->closeCursor();
 }
 
@@ -164,5 +170,6 @@ function deleteComment($idComment)
     $request_delete_comment->execute(array(
         'idComment' => $idComment
     ));
-    $request_delete_comment->closeCursor();
+
+    return $request_delete_comment;
 }
