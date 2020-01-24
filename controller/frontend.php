@@ -1,24 +1,31 @@
 <?php
-require('./model/frontend.php');
+// require('./model/frontend.php');
+require_once('./model/frontend/PostManager.php');
+require_once('./model/frontend/CommentManager.php');
 
 function listPosts()
 {
+    $postManager = new PostManager();
     // Pagination
     $page = (!empty(strip_tags($_GET['page']))) ? $_GET['page'] : 1;
     $limit = 3;
     $start = ($page - 1) * $limit;
-    $number_total_posts = paging();
+    $number_total_posts = $postManager->paging();
     $number_of_pages = ceil($number_total_posts / $limit);
 
 
-    $posts = getPosts($limit, $start);
+    $posts = $postManager->getPosts($limit, $start);
 
     require('./view/frontend/listPostsView.php');
 }
+
 function post($postId)
 {
-    $comments = getComments($postId);
-    $post = getPost($postId);
+    $postManager = new PostManager();
+    $commentManager = new CommentManager();
+
+    $comments = $commentManager->getComments($postId);
+    $post = $postManager->getPost($postId);
     if ($comments == false) {
         throw new Exception("Error de récupération des commentaires.", 1);
     } elseif ($post == false) {
@@ -30,7 +37,9 @@ function post($postId)
 
 function addComment($postId, $author, $comment)
 {
-    $insertline = postComment($postId, $author, $comment);
+    $commentManager = new CommentManager();
+
+    $insertline = $commentManager->postComment($postId, $author, $comment);
 
     if ($insertline == false) {
         throw new Exception("Impossible d\'ajouter le commentaire !", 1);
@@ -41,5 +50,7 @@ function addComment($postId, $author, $comment)
 
 function addReportComment($idComment)
 {
-    reportComment($idComment);
+    $commentManager = new CommentManager();
+
+    $commentManager->reportComment($idComment);
 }
