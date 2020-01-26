@@ -99,6 +99,10 @@ body {
   border-radius: 0;
 }
 
+.sidebar-sticky .nav-item:hover {
+  background: #385f86;
+}
+
 .form-control-dark {
   color: #fff;
   background-color: rgba(255, 255, 255, .1);

@@ -25,10 +25,12 @@
             </thead>
             <tbody>
                 <?php
+                $number0fElements = 0;
                 while ($data_comments = $comments->fetch()) {
                     if (empty($data_comments)) {
                         echo 'Il n\'y a pas de commentaire à afficher!';
                     } else {
+                        $number0fElements++;
                 ?>
                         <tr>
                             <td><?= $data_comments['id'] ?></td>
@@ -55,9 +57,9 @@
         </table>
         <div class="clearfix">
             <div class="hint-text">Affichage de
-                <b><?= $limit; ?></b>
+                <b><?= $number0fElements; ?></b>
                 entrées sur
-                <b><?= $number_total_posts; ?></b>
+                <b><?= $number_total_comments; ?></b>
             </div>
             <ul class="pagination">
                 <li class="page-item disabled">

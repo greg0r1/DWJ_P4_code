@@ -14,6 +14,11 @@
     <script src="../public/js/form-validation.js"></script>
     <script>
         tinymce.init({
-            selector: 'textarea'
+            selector: 'textarea',
+            themes: 'modern',
+            height: 200,
+            elementpath: false,
+            menubar: 'insert format table tools help',
+            skin: 'lightgray',
         });
     </script>

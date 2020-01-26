@@ -1,7 +1,7 @@
 .themed-grid-col {
   padding: 30px;
-  background-color: rgba(61, 89, 124, 0.15);
-  border: 1px solid rgba(61, 89, 124, 0.2);
+  background-color: #3d597c26;
+  border: .5px solid #cad7e3;
   display: flex;
   flex-direction: column;
   text-align: center;

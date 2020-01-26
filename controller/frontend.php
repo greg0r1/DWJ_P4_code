@@ -1,11 +1,10 @@
 <?php
-// require('./model/frontend.php');
 require_once('./model/frontend/PostManager.php');
 require_once('./model/frontend/CommentManager.php');
 
 function listPosts()
 {
-    $postManager = new PostManager();
+    $postManager = new OC\DWJ_P4\model\frontend\PostManager();
     // Pagination
     $page = (!empty(strip_tags($_GET['page']))) ? $_GET['page'] : 1;
     $limit = 3;
@@ -21,8 +20,8 @@ function listPosts()
 
 function post($postId)
 {
-    $postManager = new PostManager();
-    $commentManager = new CommentManager();
+    $postManager = new OC\DWJ_P4\model\frontend\PostManager();
+    $commentManager = new OC\DWJ_P4\model\frontend\CommentManager();
 
     $comments = $commentManager->getComments($postId);
     $post = $postManager->getPost($postId);
@@ -37,7 +36,7 @@ function post($postId)
 
 function addComment($postId, $author, $comment)
 {
-    $commentManager = new CommentManager();
+    $commentManager = new OC\DWJ_P4\model\frontend\CommentManager();
 
     $insertline = $commentManager->postComment($postId, $author, $comment);
 
@@ -50,7 +49,7 @@ function addComment($postId, $author, $comment)
 
 function addReportComment($idComment)
 {
-    $commentManager = new CommentManager();
+    $commentManager = new OC\DWJ_P4\model\frontend\CommentManager();
 
     $commentManager->reportComment($idComment);
 }

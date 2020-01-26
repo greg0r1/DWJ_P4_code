@@ -1,6 +1,11 @@
 <?php
 
-class PostManager
+namespace OC\DWJ_P4\model\frontend;
+
+
+require_once('Manager.php');
+
+class PostManager extends Manager
 {
 
     public function getPosts($limit, $start)
@@ -10,8 +15,8 @@ class PostManager
         $sql_posts = ("SELECT *, DATE_FORMAT(creation_date, 'Message du : %d/%m/%Y à %Hh%i') AS formatted_date FROM posts  ORDER BY creation_date DESC LIMIT :limit OFFSET :start");
         $request_posts = $db->prepare($sql_posts) or die(print_r($db->errorInfo()));
 
-        $request_posts->bindValue('limit', $limit, PDO::PARAM_INT);
-        $request_posts->bindValue('start', $start, PDO::PARAM_INT);
+        $request_posts->bindValue('limit', $limit, \PDO::PARAM_INT);
+        $request_posts->bindValue('start', $start, \PDO::PARAM_INT);
 
         $request_posts->execute();
 
@@ -49,15 +54,5 @@ class PostManager
         $insertline = $comments->execute(array($postId, $author, $comment));
 
         return $insertline;
-    }
-
-    private function dbConnect()
-    {
-        try {
-            $db = new PDO('mysql:host=localhost:8889;dbname=oc_forteroche; charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-            return $db;
-        } catch (Exception $e) {
-            die('Erreur :' . $e->getMessage());
-        }
     }
 }

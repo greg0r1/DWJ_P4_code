@@ -1,6 +1,10 @@
 <?php
 
-class CommentManager
+namespace OC\DWJ_P4\model\frontend;
+
+require_once('Manager.php');
+
+class CommentManager extends Manager
 {
     public function getComments($postId)
     {
@@ -27,7 +31,7 @@ class CommentManager
         $addReportComment->execute(array($idComment));
 
         if ($addReportComment == false) {
-            throw new Exception("Error: Le commentaire n'a pas pu être signalé", 1);
+            throw new \Exception("Error: Le commentaire n'a pas pu être signalé", 1);
         } else {
             $alertMessReq = $db->prepare("SELECT `author` FROM `comments` WHERE `id` = ?");
             $alertMessReq->execute(array($idComment));
@@ -39,15 +43,5 @@ class CommentManager
 
         $alertMessReq->closeCursor();
         $addReportComment->closeCursor();
-    }
-
-    private function dbConnect()
-    {
-        try {
-            $db = new PDO('mysql:host=localhost:8889;dbname=oc_forteroche; charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-            return $db;
-        } catch (Exception $e) {
-            die('Erreur' . $e->getMessage());
-        }
     }
 }

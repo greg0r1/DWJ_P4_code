@@ -11,6 +11,8 @@ body {
     font-weight: normal;
     letter-spacing: 0.007em;
     -webkit-font-smoothing: antialiased;
+    background: #f9fcff;
+
 }
 
 h2 {
@@ -114,15 +116,51 @@ header>nav {
     background-color: #F5F8F9;
 }
 
+/* Tinymce */
 #tinymceForm>div>div,
 #tinymceTitle {
     margin-bottom: 20px;
+}
+
+#tinymceTitle {
+    border: 1px solid #e8eef4;
+}
+
+.mce-menubar .mce-menubtn button {
+    color: #697f97 !important;
+}
+
+.mce-menubar {
+    border-bottom: 1px solid #f9fcff !important;
+}
+
+.mce-btn-group:not(:first-child) {
+    border-left: 1px solid #f9fcff !important;
+}
+
+.mce-panel {
+    background-color: #dee7f0 !important;
+    border-radius: 3px;
+    border: #dee7f0 !important;
+}
+
+.mce-btn {
+    background-color: #dee7f0 !important;
+}
+
+.mce-ico {
+    color: #697f97 !important;
+}
+
+.mce-menubtn button {
+    color: #697f97 !important;
 }
 
 #tinymceForm {
     max-width: 800px;
 }
 
+/* End Tinymce */
 
 .btn-primary {
     color: #fff;

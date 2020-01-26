@@ -1,16 +1,11 @@
 <?php ob_start(); ?>
 
-<h4 class="mb-3">Billet n°<?= $post['id']; ?> de <strong><?= $post['author']; ?><strong></strong></h4>
-<form id="tinymceForm" action="index.php?action=updatePost&amp;idPost=<?= $post['id']; ?>" method="post">
+<h4 class="mb-3">Commentaire n°<?= $comment['id']; ?> de <strong><?= $comment['author']; ?><strong></strong></h4>
+<form id="tinymceForm" action="index.php?action=updateComment&amp;idComment=<?= $comment['id']; ?>" method="post">
     <div class="col-md-12 mb-3">
-        <label for="tinymceTitle">Titre du billet</label>
-        <input type="text" class="form-control" name="tinymceTitle" id="tinymceTitle" placeholder="" value="<?= $post['title']; ?>" required>
-        <div class="invalid-feedback">
-            Veuillez saisir un titre pour ce billet.
-        </div>
-        <label for="tinymceContent">Contenu du billet</label>
+        <label for="tinymceContent">Contenu du commentaire</label>
         <textarea id="tinymceContent" name="tinymceContent">
-            <?= $post['content']; ?>
+            <?= $comment['comment']; ?>
         </textarea>
         <div class="row">
             <div class="col-md-12 mb-3">

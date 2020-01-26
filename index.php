@@ -70,6 +70,21 @@ try {
             }
         } elseif ($_GET['action'] == 'commentsList') {
             listCommentsCRUD();
+        } elseif ($_GET['action'] == 'editComment') {
+            if (isset($_GET['id'])) {
+                $commentId = $_GET['id'];
+                editComment($commentId);
+            } else {
+                listCommentsCRUD();
+            }
+        } elseif ($_GET['action'] == 'updateComment') {
+            if (!empty($_POST['tinymceTitle']) || !empty($_POST['tinymceContent'])) {
+                $idComment = $_GET['idComment'];
+                $comment = $_POST['tinymceContent'];
+                updateComment($idComment, $comment);
+            } else {
+                throw new Exception("Erreur de contenu. Les données du formulaire sont vides.", 1);
+            }
         } elseif ($_GET['action'] == 'reportedCommentsList') {
             reportedCommentsListCRUD();
         } elseif ($_GET['action'] == 'deleteComment') {
