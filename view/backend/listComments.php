@@ -32,7 +32,7 @@
                     } else {
                         $number0fElements++;
                 ?>
-                        <tr class="pointer" onclick="document.location = 'index.php?action=editComment&amp;id=<?= $data_comments['id']; ?>'">
+                        <tr>
                             <td><?= $data_comments['id'] ?></td>
                             <td><a href="index.php?action=editPost&amp;id=<?= $data_comments['post_id']; ?>"><?= $data_comments['post_id'] ?></td>
                             <td><?= $data_comments['author'] ?></td>

@@ -19,7 +19,8 @@ function adminCnx()
     if (isset($_COOKIE['nameAdminConnected'])) {
         require('./view/backend/home.php');
     } else {
-        echo 'Erreur d\'authentification';
+        echo '<script>alert("Erreur d\'authentification")</script>';
+        echo '<script>document.location.href="index.php?action=loginForm"</script>';
     }
 }
 

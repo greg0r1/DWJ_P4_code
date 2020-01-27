@@ -47,3 +47,4 @@
         </a>
     </div>
     <!--end Carousel -->
+    </section>

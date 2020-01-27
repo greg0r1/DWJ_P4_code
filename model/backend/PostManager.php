@@ -10,7 +10,7 @@ class PostManager extends Manager
     public function addNewPost()
     {
         $db = $this->dbConnect();
-        $sql = "INSERT INTO `posts`(`title`, `content`, `author`, `creation_date`) VALUES (:title,:content,:author,NOW())";
+        $sql = "INSERT INTO `oc_posts`(`title`, `content`, `author`, `creation_date`) VALUES (:title,:content,:author,NOW())";
         $newPost = $db->prepare($sql);
         $newPost->execute(array(
             'title' => $_POST['tinymceTitle'],
@@ -24,7 +24,7 @@ class PostManager extends Manager
     {
         $db = $this->dbConnect();
 
-        $sql_posts = ("SELECT *, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%i') AS formatted_date, DATE_FORMAT(last_modification, '%d/%m/%Y à %Hh%i') AS last_modification_format FROM posts  ORDER BY creation_date DESC LIMIT :limit OFFSET :start");
+        $sql_posts = ("SELECT *, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%i') AS formatted_date, DATE_FORMAT(last_modification, '%d/%m/%Y à %Hh%i') AS last_modification_format FROM oc_posts  ORDER BY creation_date DESC LIMIT :limit OFFSET :start");
         $request_posts = $db->prepare($sql_posts) or die(print_r($db->errorInfo()));
         $request_posts->bindValue('limit', $limit, \PDO::PARAM_INT);
 
@@ -40,7 +40,7 @@ class PostManager extends Manager
     {
         $db = $this->dbConnect();
 
-        $sql_paging = "SELECT COUNT(*) AS number_total_posts FROM `posts`";
+        $sql_paging = "SELECT COUNT(*) AS number_total_posts FROM `oc_posts`";
         $total_posts = $db->query($sql_paging);
         $req_total_posts = $total_posts->fetch();
         $number_total_posts = $req_total_posts['number_total_posts'];
@@ -52,7 +52,7 @@ class PostManager extends Manager
     {
         $db = $this->dbConnect();
 
-        $request_post = $db->prepare("SELECT * FROM `posts` WHERE id = ?") or die(print_r($db->errorInfo()));
+        $request_post = $db->prepare("SELECT * FROM `oc_posts` WHERE id = ?") or die(print_r($db->errorInfo()));
 
         $request_post->execute(array($postId));
         $post = $request_post->fetch();
@@ -63,7 +63,7 @@ class PostManager extends Manager
     public function updatingPost($idPost, $title, $content)
     {
         $db = $this->dbConnect();
-        $request_post = $db->prepare("UPDATE `posts` SET `title`= :title,`content`= :content, `last_modification`= NOW() WHERE id = :idPost");
+        $request_post = $db->prepare("UPDATE `oc_posts` SET `title`= :title,`content`= :content, `last_modification`= NOW() WHERE id = :idPost");
         $request_post->execute(array(
             'title' => $title,
             'content' => $content,
@@ -78,7 +78,7 @@ class PostManager extends Manager
     public function deletePost($idPost)
     {
         $db = $this->dbConnect();
-        $request_post = $db->prepare("DELETE FROM `posts` WHERE id = :idPost");
+        $request_post = $db->prepare("DELETE FROM `oc_posts` WHERE id = :idPost");
         $request_post->execute(array(
             'idPost' => $idPost
         ));

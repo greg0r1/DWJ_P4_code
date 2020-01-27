@@ -34,12 +34,5 @@
                         </label>
                     </div>
 
-                    <p><a href="index.php?action=listPosts">Retour au site</a></p>
-                </form>
-        </div>
-        </main>
-    </div>
-    </div>
-</body>
-
-</html>
+                    <p><a href="index.php?action=listPosts">
+                            <- Retour au site</a> </p> </form> </div> </main> </div> </div> </body> </html>

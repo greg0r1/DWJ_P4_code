@@ -10,6 +10,10 @@ h2,
 h3 {
     text-align: center;
     margin: auto;
+    font-family: 'Libre Baskerville',
+        serif;
+    letter-spacing: -.1rem;
+    text-rendering: optimizeLegibility;
 }
 
 h4 {
@@ -23,12 +27,12 @@ h4 {
 
 header {
     margin: 0;
-    background: #328480;
+    background: transparent;
     color: white;
     display: flex;
     justify-content: flex-start;
-    padding: 10px;
 }
+
 
 header>h1 {
     margin-left: 0;
@@ -47,7 +51,15 @@ header>a {
     margin: auto;
 }
 
-header>nav {
+#postsList>p:nth-of-type(2) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#topSection {
     background-color: #164a53;
 }
 
@@ -66,6 +78,17 @@ header>nav {
 header>a:hover {
     background-color: #b3b629;
     border: none;
+}
+
+#articles {
+    background-color: #f2f2f2;
+    padding-top: 30px;
+}
+
+#postsList {
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 1px 1px 5px #CCCACA;
 }
 
 #billets {
@@ -117,6 +140,8 @@ input {
 
 .marketing h2 {
     color: #164a53;
+    font-family: "librebaskerville-bold",
+        serif;
 }
 
 .btn-secondary:hover {
@@ -205,9 +230,9 @@ input {
 .bd-footer {
     font-size: .875rem;
     text-align: center;
-    background-color: #f0f5f5;
+    background-color: #2c4163ad;
 }
 
 .text-muted {
-    color: #608488 !important;
+    color: #d9e2ee !important;
 }

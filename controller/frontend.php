@@ -7,7 +7,7 @@ function listPosts()
     $postManager = new OC\DWJ_P4\model\frontend\PostManager();
     // Pagination
     $page = (!empty(strip_tags($_GET['page']))) ? $_GET['page'] : 1;
-    $limit = 3;
+    $limit = 6;
     $start = ($page - 1) * $limit;
     $number_total_posts = $postManager->paging();
     $number_of_pages = ceil($number_total_posts / $limit);

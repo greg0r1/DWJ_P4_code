@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-md-12 mb-3">
                 <button type="submit" class="btn btn-primary mb-2">Modifier</button>
-                <a href="index.php?action=createPost" type="button" class="btn btn-primary mb-2">Effacer</a>
+                <a href="index.php?action=createPost" class="btn btn-primary mb-2">Effacer</a>
             </div>
             <a class="nav-link" href="<?= $_SERVER['HTTP_REFERER']; ?>">
                 Retour

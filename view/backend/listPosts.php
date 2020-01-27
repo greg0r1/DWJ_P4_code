@@ -40,7 +40,7 @@
                     } else {
                         $number0fElements++;
                 ?>
-                        <tr class="pointer" onclick="document.location = 'index.php?action=editPost&amp;id=<?= $data['id']; ?>'">
+                        <tr>
                             <td><?= $data['id'] ?></td>
                             <td><?= $data['title'] ?></td>
                             <td><?= $data['content']; ?></td>

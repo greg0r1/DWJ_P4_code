@@ -13,7 +13,7 @@ class Login extends Manager
             $nameAuth = 'Jean' || 'greg';
             if ($_POST['inputLogin'] == $nameAuth || $_COOKIE['nameAdminConnected'] == $nameAuth) {
                 $db = $this->dbConnect();
-                $passwd_bdd = $db->prepare("SELECT `password`,`first_name` FROM `admin_users` WHERE `login` = ?");
+                $passwd_bdd = $db->prepare("SELECT `password`,`first_name` FROM `oc_admin_users` WHERE `login` = ?");
                 $passwd_bdd->execute(array($_POST['inputLogin']));
                 $passwd_result = $passwd_bdd->fetch();
                 if (password_verify($_POST['inputPassword'], $passwd_result['password'])) {
@@ -29,7 +29,8 @@ class Login extends Manager
                 echo 'Login invalide.';
             }
         } else {
-            echo 'Erreur d\'authentification.';
+            echo '<script>alert("Erreur d\'authentification")</script>';
+            echo '<script>document.location.href="index.php?action=loginForm"</script>';
         }
     }
 }

@@ -3,7 +3,6 @@
 /* Padding below the footer and lighter body text */
 
 body {
-  padding-top: 3rem;
   color: #5a5a5a;
 }
 
@@ -12,13 +11,11 @@ body {
 -------------------------------------------------- */
 
 /* Carousel base class */
-.carousel {
-  margin-bottom: 4rem;
-}
+
 
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-  color: #27514f;
+  color: #fff;
   bottom: 3rem;
   z-index: 10;
 }
@@ -36,26 +33,32 @@ body {
   height: 32rem;
 }
 
+.carousel-inner {
+  height: 500px;
+}
+
 .carousel-item:nth-child(1) img {
   background-image: url('../img/photo-carousel-1.jpeg');
-  opacity: 0.5;
+  opacity: 0.1;
   background-size: cover;
 }
 
 .carousel-item:nth-child(2) img {
   background-image: url('../img/photo-carousel-2.jpeg');
-  opacity: 0.5;
+  opacity: 0.1;
   background-size: cover;
 }
 
 .carousel-item:nth-child(3) img {
   background-image: url('../img/photo-carousel-3.jpeg');
-  opacity: 0.5;
+  opacity: 0.1;
   background-size: cover;
 }
 
 .carousel h1 {
   text-align: left;
+  font-size: 3rem;
+  font-weight: bold;
 }
 
 /* MARKETING CONTENT
@@ -101,9 +104,6 @@ body {
   user-select: none;
 }
 
-.carousel-caption.text-left {
-  text-shadow: 1px 1px 1px white;
-}
 
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
