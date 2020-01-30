@@ -76,7 +76,7 @@ class CommentManager extends Manager
     {
         $db = $this->dbConnect();
 
-        $sql_comments = ("SELECT *, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%i') AS comment_date_format FROM `oc_comments` WHERE `reported` = 1 ORDER BY `oc_comments`.`comment_date` DESC LIMIT :limit OFFSET :start");
+        $sql_comments = ("SELECT *, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%i') AS comment_date_format FROM `oc_comments` WHERE `oc_comments`.`reported` = 1 ORDER BY `oc_comments`.`comment_date` DESC LIMIT :limit OFFSET :start");
         $request_comments = $db->prepare($sql_comments) or die(print_r($db->errorInfo()));
 
         $request_comments->bindValue('limit', $limit, \PDO::PARAM_INT);

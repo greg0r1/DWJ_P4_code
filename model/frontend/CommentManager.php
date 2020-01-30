@@ -27,7 +27,7 @@ class CommentManager extends Manager
     public function reportComment($idComment)
     {
         $db = $this->dbConnect();
-        $addReportComment = $db->prepare("UPDATE `oc_comments` SET `reported` = '1' WHERE `comments`.`id` = ?");
+        $addReportComment = $db->prepare("UPDATE `oc_comments` SET `reported` = '1' WHERE `id` = ?");
         $addReportComment->execute(array($idComment));
 
         if ($addReportComment == false) {

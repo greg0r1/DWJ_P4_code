@@ -45,7 +45,7 @@ function listPostsCRUD()
     $postManager = new OC\DWJ_P4\model\backend\PostManager();
 
     // Pagination
-    $page = (!empty(strip_tags($_GET['page']))) ? $_GET['page'] : 1;
+    $page = (!empty($_GET['page']) ? $_GET['page'] : 1);
     $limit = 10;
     $start = ($page - 1) * $limit;
     $number_total_posts = $postManager->paging();

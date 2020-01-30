@@ -71,21 +71,25 @@
                 <b><?= $number_total_posts; ?></b>
             </div>
             <ul class="pagination">
-                <li class="page-item disabled">
-                    <a href="href=index.php?action=adminListPosts&amp;page=<?= $i--; ?>">Previous</a>
+                <li class="page-item">
+                    <?php if ($page > 1) : ?>
+                        <a href="index.php?action=adminListPosts&page=<?= $page - 1 ?>" class="page-link">Précédent</a>
+                    <?php endif; ?>
                 </li>
 
                 <?php
                 for ($i = 1; $i <= $number_of_pages; $i++) {
                 ?>
                     <li class="page-item">
-                        <a href="index.php?action=adminListPosts&amp;page=<?= $i; ?>" class="page-link"><?= $i; ?></a>
+                        <a href="index.php?action=adminListPosts&page=<?= $i; ?>" class="page-link"><?= $i; ?></a>
                     </li>
                 <?php
                 };
                 ?>
                 <li class="page-item">
-                    <a href="href=index.php?action=adminListPosts&amp;page=<?= $i++; ?>" class="page-link">Next</a>
+                    <?php if ($page < $number_of_pages) : ?>
+                        <a href="index.php?action=adminListPosts&page=<?= $page + 1 ?>" class="page-link">Suivant</a>
+                    <?php endif; ?>
                 </li>
             </ul>
         </div>

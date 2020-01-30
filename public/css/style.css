@@ -9,11 +9,15 @@ h1,
 h2,
 h3 {
     text-align: center;
-    margin: auto;
+    margin: 15px;
     font-family: 'Libre Baskerville',
         serif;
     letter-spacing: -.1rem;
     text-rendering: optimizeLegibility;
+}
+
+h3 {
+    font-size: 1.5em;
 }
 
 h4 {
@@ -85,6 +89,21 @@ header>a:hover {
     padding-top: 30px;
 }
 
+#article {
+    margin: 50px;
+}
+
+#addComment {
+    color: #757454;
+}
+
+#addComment input[type="text"],
+textarea {
+    background: beige;
+    border: none;
+    padding: 10px;
+}
+
 #postsList {
     background-color: #fff;
     padding: 10px;
@@ -108,11 +127,38 @@ header>a:hover {
     color: #328480;
 }
 
+#articles .img-post {
+    background-image: url('../img/photo-carousel-1.jpeg');
+    background-size: cover;
+    height: 150px;
+}
+
+#article .img-post {
+    background-image: url('../img/photo-carousel-1.jpeg');
+    background-size: cover;
+    height: 250px;
+}
+
+
+#commentPost {
+    background-color: beige;
+    border-radius: 0 15px 15px 15px;
+    padding: 10px 20px;
+}
+
+#commentPost>p:first-child {
+    font-style: italic;
+}
+
+#addComment label {
+    margin: unset;
+}
+
 #reportedCommentForm {
     display: flex;
-    flex-direction: column;
     justify-content: flex-end;
-    margin-right: 0;
+    margin: 10px 0 2px auto;
+    align-items: center;
 }
 
 #reportedCommentForm>p,
@@ -124,6 +170,14 @@ input {
     color: #fff;
     background-color: #328480;
     border-color: #337d7a;
+    padding: .2em 1em;
+    font-size: unset;
+}
+
+#reportedCommentForm .btn-primary,
+#addComment .btn-primary {
+    background-color: #6c6c3f;
+    border-color: #5b5b32;
 }
 
 .btn-primary:hover {
@@ -134,20 +188,22 @@ input {
 
 .btn-secondary {
     color: #fff;
-    background-color: #328461;
-    border-color: hsl(154.4, 45.1%, 40%);
+    background-color: #3c6d75;
+    border-color: #33636a;
+    ;
 }
 
 .marketing h2 {
     color: #164a53;
     font-family: "librebaskerville-bold",
         serif;
+    margin: 15px;
 }
 
 .btn-secondary:hover {
     color: #fff;
-    background-color: #14bd6f;
-    border-color: #14b76c;
+    background-color: #267380;
+    border-color: #206a77;
 }
 
 a {
@@ -162,10 +218,13 @@ li {
 }
 
 #commentaires {
-    background-color: rgb(217, 233, 229);
     width: 80%;
-    margin: auto;
+    margin: 30px auto auto 0;
     color: rgb(17, 58, 59);
+}
+
+#commentaires h3 {
+    text-align: unset;
 }
 
 #retour_commentaires {
@@ -188,7 +247,6 @@ li {
 
 /* Form */
 form {
-    margin: 20px auto;
     width: 80%;
 }
 
@@ -226,13 +284,31 @@ input {
     padding: 10px;
 }
 
+.pagination li a {
+    border: none;
+    font-size: 13px;
+    min-width: 30px;
+    min-height: 30px;
+    color: #6f7e95;
+    margin: 0 2px;
+    line-height: 30px;
+    border-radius: 2px !important;
+    text-align: center;
+    padding: 0 6px;
+}
+
+.page-link {
+    background-color: #dbe5e8;
+    border: 1px solid #dee2e6;
+}
+
 /* Footer */
 .bd-footer {
     font-size: .875rem;
     text-align: center;
-    background-color: #2c4163ad;
+    background-color: #919164;
 }
 
 .text-muted {
-    color: #d9e2ee !important;
+    color: #fffffb !important;
 }

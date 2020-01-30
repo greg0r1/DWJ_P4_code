@@ -6,7 +6,7 @@ function listPosts()
 {
     $postManager = new OC\DWJ_P4\model\frontend\PostManager();
     // Pagination
-    $page = (!empty(strip_tags($_GET['page']))) ? $_GET['page'] : 1;
+    $page = (!empty($_GET['page']) ? $_GET['page'] : 1);
     $limit = 6;
     $start = ($page - 1) * $limit;
     $number_total_posts = $postManager->paging();
@@ -36,6 +36,8 @@ function post($postId)
 
 function addComment($postId, $author, $comment)
 {
+    setcookie('author', $author, time() + 365 * 24 * 3600);
+
     $commentManager = new OC\DWJ_P4\model\frontend\CommentManager();
 
     $insertline = $commentManager->postComment($postId, $author, $comment);

@@ -14,16 +14,15 @@ $title = 'Forteroche';
             ?>
                     <div class="col-lg-4">
                         <article id="postsList">
-                            <i id="account_circle" class="material-icons md-48">
-                                short_text
-                            </i>
+                            <div class="img-post">
+                            </div>
                             <h2><?= strip_tags($data['title']) ?></h2>
                             <p>
                                 <time datetime="<?= $data['creation_date']; ?>" pubdate="pubdate"><?= $data['formatted_date']; ?></time> de
                                 <span rel="author"><?= $data['author']; ?></span>
                             </p>
                             <p><?= $data['content'] ?></p>
-                            <p><a class="btn btn-secondary" href="index.php?action=post&amp;id=<?= $data['id']; ?>" role="button">Voir les commentaires &raquo;</a></p>
+                            <p><a class="btn btn-secondary" href="index.php?action=post&amp;id=<?= $data['id']; ?>" role="button">Voir l'article &raquo;</a></p>
                         </article>
                     </div>
             <?php
@@ -48,11 +47,21 @@ $title = 'Forteroche';
         ?>
             <nav aria-label="Page navigation">
                 <ul class="pagination">
-                    <?php
-                    for ($i = 1; $i <= $number_of_pages; $i++) {
-                        echo '<li><a href="index.php?action=listPosts&page=' . $i . '">' . $i .  '</a></li>';
-                    }
-                    ?>
+                    <li class="page-item">
+                        <?php if ($page > 1) : ?>
+                            <a href="index.php?action=listPosts&amp;page=<?= $page - 1 ?>" class="page-link">Précédent</a>
+                        <?php endif ?>
+                    </li>
+                    <?php for ($i = 1; $i <= $number_of_pages; $i++) : ?>
+                        <li class="page-item">
+                            <a href="index.php?action=listPosts&amp;page=<?= $i ?>" class="page-link"><?= $i ?></a>
+                        </li>
+                    <?php endfor ?>
+                    <li class=" page-item">
+                        <?php if ($page < $number_of_pages) : ?>
+                            <a href="index.php?action=listPosts&amp;page=<?= $page + 1 ?>" class="page-link">Suivant</a>
+                        <?php endif ?>
+                    </li>
                 </ul>
             </nav>
         <?php
@@ -61,7 +70,6 @@ $title = 'Forteroche';
     </div>
     <!-- end paging -->
 </section>
-
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php');

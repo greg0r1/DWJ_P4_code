@@ -34,15 +34,15 @@
                 ?>
                         <tr>
                             <td><?= $data_comments['id'] ?></td>
-                            <td><a href="index.php?action=editPost&amp;id=<?= $data_comments['id']; ?>"><?= $data_comments['post_id'] ?></a></td>
+                            <td><a href="index.php?action=editPost&amp;id=<?= $data_comments['post_id']; ?>"><?= $data_comments['post_id'] ?></a></td>
                             <td><?= $data_comments['author'] ?></td>
                             <td><?= $data_comments['comment'] ?></td>
                             <td><?= $data_comments['comment_date_format'] ?></td>
                             <td>
-                                <a href="index.php?action=editPost&amp;id=<?= $data_comments['id']; ?>" class="edit" title="Modifier">
+                                <a href="index.php?action=editComment&amp;id=<?= $data_comments['id']; ?>" class="edit" title="Modifier">
                                     <i class="material-icons"></i>
                                 </a>
-                                <a href="index.php?action=deletePost&amp;id=<?= $data_comments['id']; ?>" class="delete" title="Supprimer" onclick="return deleteDialog()">
+                                <a href="index.php?action=deleteComment&amp;id=<?= $data_comments['id']; ?>" class="delete" title="Supprimer" onclick="return deleteDialog()">
                                     <i class="material-icons"></i>
                                 </a>
                             </td>
@@ -62,8 +62,10 @@
                 <b><?= $number_total_comments; ?></b>
             </div>
             <ul class="pagination">
-                <li class="page-item disabled">
-                    <a href="index.php?action=reportedCommentsList&amp;page=<?= $i; ?>">Previous</a>
+                <li class="page-item">
+                    <?php if ($page > 1) : ?>
+                        <a href="index.php?action=reportedCommentsList&amp;page=<?= $i; ?>" class="page-link">Précédent</a>
+                    <?php endif; ?>
                 </li>
 
                 <?php
@@ -76,7 +78,9 @@
                 };
                 ?>
                 <li class="page-item">
-                    <a href="index.php?action=reportedCommentsList&amp;page=<?= $i++; ?>" class="page-link">Next</a>
+                    <?php if ($page < $number_of_pages) : ?>
+                        <a href="index.php?action=reportedCommentsList&amp;page=<?= $i++; ?>" class="page-link">Suivant</a>
+                    <?php endif; ?>
                 </li>
             </ul>
         </div>

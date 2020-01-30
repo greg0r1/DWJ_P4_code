@@ -62,8 +62,10 @@
                 <b><?= $number_total_comments; ?></b>
             </div>
             <ul class="pagination">
-                <li class="page-item disabled">
-                    <a href="index.php?action=commentsList&amp;page=<?= $i--; ?>">Previous</a>
+                <li class="page-item">
+                    <?php if ($page > 1) : ?>
+                        <a href="index.php?action=commentsList&amp;page=<?= $page - 1 ?>" class="page-link">Précédent</a>
+                    <?php endif; ?>
                 </li>
 
                 <?php
@@ -76,7 +78,9 @@
                 };
                 ?>
                 <li class="page-item">
-                    <a href="index.php?action=commentsList&amp;page=<?= $i++; ?>" class="page-link">Next</a>
+                    <?php if ($page < $number_of_pages) : ?>
+                        <a href="index.php?action=commentsList&amp;page=<?= $page + 1 ?>" class="page-link">Suivant</a>
+                    <?php endif; ?>
                 </li>
             </ul>
 
