@@ -1,4 +1,5 @@
-<?php $title = 'Billet de ' . $post['author'] ?>
+<?php $title = 'Billet de ' . $post['author'];
+?>
 
 <?php ob_start(); ?>
 
@@ -47,7 +48,7 @@
             ?>
             <form id="addComment" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="POST">
                 <p><label for="author">Pseudo</label></p>
-                <p><input type="text" name="author" id="author" value="<?= (isset($_COOKIE['author'])) ? $_COOKIE['author'] : ""  ?>"></p>
+                <p><input type="text" name="author" id="author" value="<?= (isset($_SESSION['author'])) ? $_SESSION['author'] : ""; ?>"></p>
                 <p><label for="comment">Message</label></p>
                 <p><textarea name="comment" id="comment" cols="60" rows="2"></textarea></p>
                 <p>

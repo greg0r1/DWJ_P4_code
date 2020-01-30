@@ -4,10 +4,12 @@ require('controller/backend.php');
 
 try {
     if (isset($_GET['action'])) {
+        // Frontend
         if ($_GET['action'] == 'listPosts') {
             listPosts();
         } elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
+                session_start();
                 $postId = $_GET['id'];
                 post($postId);
             } else {
@@ -16,6 +18,9 @@ try {
         } elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
+                    session_start();
+                    $_SESSION['author'] = $_POST['author'];
+
                     addComment($_GET['id'], $_POST['author'], $_POST['comment']);
                 } else {
                     throw new Exception("Erreur : tous les champs ne sont pas remplis !", 1);
@@ -23,7 +28,9 @@ try {
             } else {
                 throw new Exception("Erreur : aucun identifiant de billet envoyé", 1);
             }
-        } elseif ($_GET['action'] == 'loginForm') {
+        }
+        // Backend
+        elseif ($_GET['action'] == 'loginForm') {
             loginForm();
         } elseif ($_GET['action'] == 'loginCnx') {
             loginCnx();

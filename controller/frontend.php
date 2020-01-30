@@ -36,8 +36,6 @@ function post($postId)
 
 function addComment($postId, $author, $comment)
 {
-    setcookie('author', $author, time() + 365 * 24 * 3600);
-
     $commentManager = new OC\DWJ_P4\model\frontend\CommentManager();
 
     $insertline = $commentManager->postComment($postId, $author, $comment);

@@ -41,6 +41,16 @@ header>nav {
     background-color: #254c73 !important;
 }
 
+.navbar-nav {
+    -ms-flex-direction: unset;
+    flex-direction: initial;
+    align-items: center;
+}
+
+.material-icons {
+    margin: 0 10px;
+}
+
 #homeAdmin {
     margin: 0;
     max-width: 800px;

@@ -133,6 +133,12 @@ textarea {
     height: 150px;
 }
 
+#articles .img-post {
+    background-image: url('../img/photo-carousel-1.jpeg');
+    background-size: cover;
+    height: 150px;
+}
+
 #article .img-post {
     background-image: url('../img/photo-carousel-1.jpeg');
     background-size: cover;
@@ -243,6 +249,10 @@ li {
 #commentaires>ul>li>p {
     padding: 5px;
     margin: auto;
+}
+
+#gtx-trans {
+    display: none !important;
 }
 
 /* Form */

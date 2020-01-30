@@ -1,6 +1,0 @@
-{
-    "require": {
-        "phpunit/phpunit": "^8.5",
-        "codeigniter/framework": "^3.1"
-    }
-}

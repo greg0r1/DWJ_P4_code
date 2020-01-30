@@ -6,6 +6,11 @@
                 <li class="nav-item text-nowrap">
                     <a class="nav-link" href="index.php?action=loginForm">Se déconnecter</a>
                 </li>
+                <li>
+                    <i class="material-icons">
+                        account_circle
+                    </i>
+                </li>
             </ul>
         </nav>
     </header>
