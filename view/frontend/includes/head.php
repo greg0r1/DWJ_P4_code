@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../public/css/carousel.css">
     <script src="../public/js/style.js"></script>
     <!-- Favicons -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Roboto+Mono:400,500|Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet">
     <meta name="theme-color" content="#563d7c">
 </head>

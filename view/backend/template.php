@@ -10,6 +10,7 @@
 </head>
 
 <?php include('includes/header.php'); ?>
+
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-12 pb-12 mb-13">
     <h1 class="h1"><?= $titleCurrentPage ?></p>
 </div>

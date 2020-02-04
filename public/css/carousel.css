@@ -25,11 +25,14 @@ body {
   height: 22rem;
 }
 
-.carousel-item>img {
+.carousel-item {
   position: absolute;
   top: -10px;
   left: 0;
   min-width: 100%;
+}
+
+.carousel-item .bd-placeholder-img {
   height: 32rem;
 }
 
@@ -37,19 +40,19 @@ body {
   height: 500px;
 }
 
-.carousel-item:nth-child(1) img {
+.carousel-item:nth-child(1) .bd-placeholder-img {
   background-image: url('../img/photo-carousel-1.jpeg');
   opacity: 0.1;
   background-size: cover;
 }
 
-.carousel-item:nth-child(2) img {
+.carousel-item:nth-child(2) .bd-placeholder-img {
   background-image: url('../img/photo-carousel-2.jpeg');
   opacity: 0.1;
   background-size: cover;
 }
 
-.carousel-item:nth-child(3) img {
+.carousel-item:nth-child(3) .bd-placeholder-img {
   background-image: url('../img/photo-carousel-3.jpeg');
   opacity: 0.1;
   background-size: cover;

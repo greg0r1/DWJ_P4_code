@@ -42,7 +42,7 @@
                                 <a href="index.php?action=editComment&amp;id=<?= $data_comments['id']; ?>" class="edit" title="Modifier">
                                     <i class="material-icons"></i>
                                 </a>
-                                <a href="index.php?action=deleteComment&amp;id=<?= $data_comments['id']; ?>" class="delete" title="Supprimer" onclick="return deleteDialog()">
+                                <a href="index.php?action=deleteComment&amp;idComment=<?= $data_comments['id']; ?>" class="delete" title="Supprimer" onclick="return deleteDialog()">
                                     <i class="material-icons"></i>
                                 </a>
                             </td>

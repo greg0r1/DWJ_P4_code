@@ -9,8 +9,8 @@
             <article>
                 <div class="img-post">
                 </div>
-                <h1><?= htmlspecialchars($post['title']) ?></h1>
-                <p><time datetime="<?= $post['creation_date']; ?>" pubdate="pubdate"><?= $post['formatted_date']; ?></time> de <?= $post['author']; ?></p>
+                <h1><?= strip_tags($post['title']) ?></h1>
+                <p><time datetime="<?= $post['creation_date']; ?>"><?= $post['formatted_date']; ?></time> de <?= strip_tags($post['author']); ?></p>
                 <p><?= strip_tags($post['content']); ?></p>
             </article>
         </div>

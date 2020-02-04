@@ -5,7 +5,7 @@
     <div class="col-md-12 mb-3">
         <label for="tinymceContent">Contenu du commentaire</label>
         <textarea id="tinymceContent" name="tinymceContent">
-            <?= $comment['comment']; ?>
+            <?= htmlspecialchars($comment['comment']); ?>
         </textarea>
         <div class="row">
             <div class="col-md-12 mb-3">

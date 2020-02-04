@@ -4,6 +4,7 @@ $title = 'Forteroche';
 <?php ob_start(); ?>
 <!-- Posts -->
 <section id="articles">
+    <H2>Les derniers billets</H2>
     <div class="container marketing">
         <div class="row">
             <?php
@@ -13,12 +14,12 @@ $title = 'Forteroche';
                 } else {
             ?>
                     <div class="col-lg-4">
-                        <article id="postsList">
+                        <article class="postsList">
                             <div class="img-post">
                             </div>
-                            <h2><?= strip_tags($data['title']) ?></h2>
+                            <h3><?= strip_tags($data['title']) ?></h3>
                             <p>
-                                <time datetime="<?= $data['creation_date']; ?>" pubdate="pubdate"><?= $data['formatted_date']; ?></time> de
+                                <time datetime="<?= $data['creation_date']; ?>"><?= $data['formatted_date']; ?></time> de
                                 <span rel="author"><?= $data['author']; ?></span>
                             </p>
                             <p><?= $data['content'] ?></p>

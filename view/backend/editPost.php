@@ -10,7 +10,7 @@
         </div>
         <label for="tinymceContent">Contenu du billet</label>
         <textarea id="tinymceContent" name="tinymceContent">
-            <?= $post['content']; ?>
+            <?= htmlspecialchars($post['content']); ?>
         </textarea>
         <div class="row">
             <div class="col-md-12 mb-3">
